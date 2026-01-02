@@ -1,58 +1,5 @@
-## Retail Sales Analysis (SQL)
 
-End-to-end SQL script (`sql_query_p1.sql`) to explore and analyze a retail transactions table. It creates the database, defines the schema, performs basic data quality checks, and answers 10 common business questions using filters, aggregates, and window functions.
-
-### Schema
-Table: `retail_sales`
-- Keys: `transaction_id` (PK)
-- Date/Time: `sale_date`, `sale_time`
-- Customer: `customer_id`, `gender`, `age`
-- Product: `category`
-- Measures: `quantity`, `price_per_unit`, `cogs`, `total_sale`
-
-### What the script does
-1. Creates database `sql_project_p2` and table `retail_sales` (drops existing table).
-2. Quick inspection queries (`SELECT * LIMIT 10`, row counts).
-3. Data quality checks for nulls; deletes any incomplete rows.
-4. Exploratory queries: total rows, distinct customers, distinct categories.
-5. Answers 10 analysis questions:
-   - Q1: Sales on a specific date.
-   - Q2: Clothing transactions in Nov-2022 above a quantity threshold.
-   - Q3: Total sales and order counts by category.
-   - Q4: Average age of Beauty shoppers.
-   - Q5: High-value transactions (> 1000).
-   - Q6: Transactions by gender within each category.
-   - Q7: Best-selling month per year via window `RANK()`.
-   - Q8: Top 5 customers by total sales.
-   - Q9: Unique customers per category.
-   - Q10: Orders by time-of-day shift (Morning/Afternoon/Evening).
-
-### How to run
-1. Load data into `retail_sales` (CSV import or inserts not included in the script).
-2. Execute the script in your SQL engine. For MySQL, use `SOURCE sql_query_p1.sql;`. For Postgres, use `\i sql_query_p1.sql`.
-3. Rerun the analysis queries after data load.
-
-### Engine compatibility
-- The script uses `EXTRACT()` and `TO_CHAR()` (PostgreSQL style) for date parts. On MySQL, swap to `HOUR(sale_time)` and `DATE_FORMAT(sale_date, '%Y-%m')`.
-- Monetary fields use `FLOAT`; for production, prefer `DECIMAL(10,2)` to avoid rounding issues.
-
-### Suggested improvements
-- Fix minor typo in the null-check (`transactions_id` → `transaction_id`).
-- Add semicolons for consistency and wrap cleaning into a transaction.
-- Add indexes on `sale_date`, `category`, `customer_id`, and composite `(category, gender)` for faster filters.
-- Replace function-on-column date filters with range predicates for sargability (e.g., `sale_date >= '2022-11-01' AND sale_date < '2022-12-01'`).
-
-### Structure
-```
-Project/
-└── Retail-Sales-Analysis-SQL-Project--P1-main/
-    ├── sql_query_p1.sql   # Schema, QA checks, and analysis queries
-    └── README.md          # Overview and usage
-```
-
-### License
-Use and adapt freely for learning, demos, or interview preparation. Attribution appreciated but not required.
-# Retail Sales Analysis SQL Project
+## Retail Sales Analysis SQL Project
 
 ## Project Overview
 
